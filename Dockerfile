@@ -13,4 +13,4 @@ EXPOSE 8000
 # Копирует все файлы из нашего локального проекта в контейнер для автоперезагрузки изменений
 COPY . .
 
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "test_django_channels.wsgi"]
+CMD ["daphne", "test_django_channels.asgi:application", "-b", "0.0.0.0", "-p", "8000"]
