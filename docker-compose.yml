@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+
+  app:
+    build: .
+    restart: always
+    command: daphne test_django_channels.asgi:application -b 0.0.0.0 -p 8000
+    ports:
+      - '0.0.0.0:8000:8000'
+
+  redis:
+    container_name: redis
+    image: redis
+    restart: unless-stopped
+    ports:
+        - 6379:6379
