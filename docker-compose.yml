@@ -13,14 +13,16 @@ services:
       - ./conf.d:/etc/nginx/conf.d
 
   app:
-    build: .
+    build:
+      context: .
+      dockerfile: wsgi.Dockerfile
     restart: always
-    command: gunicorn --bind 0.0.0.0:8020 test_django_channels.wsgi
 
   ws_backend:
-    build: .
+    build:
+      context: .
+      dockerfile: asgi.Dockerfile
     restart: always
-    command: daphne test_django_channels.asgi:application -b 0.0.0.0 -p 8001
 
   redis:
     container_name: redis
