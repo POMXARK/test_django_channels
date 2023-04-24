@@ -11,7 +11,7 @@ RUN apt update &&  \
     apt install redis-server -y  && \
     apt install net-tools -y && \
     pip install --no-cache-dir -r requirements.txt
-EXPOSE 8000
+EXPOSE 8080
 
 # Копирует все файлы из нашего локального проекта в контейнер для автоперезагрузки изменений
 COPY . .
