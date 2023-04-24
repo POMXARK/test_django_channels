@@ -15,8 +15,6 @@ services:
     build: .
     restart: always
     command: daphne test_django_channels.asgi:application -b 0.0.0.0 -p 8000
-    expose:
-      - 8000
 
   redis:
     container_name: redis
