@@ -6,15 +6,21 @@ services:
     image: nginx:alpine
     depends_on:
       - app
+      - ws_backend
     ports:
-      - "8000:8000"
+      - "8080:8010"
     volumes:
       - ./conf.d:/etc/nginx/conf.d
 
   app:
     build: .
     restart: always
-    command: daphne test_django_channels.asgi:application -b 0.0.0.0 -p 8000
+    command: gunicorn --bind 0.0.0.0:8020 test_django_channels.wsgi
+
+  ws_backend:
+    build: .
+    restart: always
+    command: daphne test_django_channels.asgi:application -b 0.0.0.0 -p 8001
 
   redis:
     container_name: redis
