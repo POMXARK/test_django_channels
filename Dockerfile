@@ -18,4 +18,4 @@ COPY . .
 
 CMD ["/bin/bash","-c","./startup.sh"]
 
-#  docker run -p 8080:8000 -it $(docker build -q .)
+#  docker run -p 8080:8080 -it $(docker build -q .)
