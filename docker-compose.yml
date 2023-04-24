@@ -1,13 +1,22 @@
 version: '3.8'
 
 services:
+  #nginx service
+  web:
+    image: nginx:alpine
+    depends_on:
+      - app
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d
 
   app:
     build: .
     restart: always
     command: daphne test_django_channels.asgi:application -b 0.0.0.0 -p 8080
-    ports:
-      - "0.0.0.0:8080:8080"
+    expose:
+      - 8080
 
   redis:
     build: .
