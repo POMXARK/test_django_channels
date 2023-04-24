@@ -7,11 +7,10 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /app
 # Запускает команду pip install для всех библиотек, перечисленных в requirements.txt
 COPY requirements.txt requirements.txt
-RUN apt update &&  \
-    apt install redis-server -y  && \
-    apt install net-tools -y && \
-    pip install --no-cache-dir -r requirements.txt
-EXPOSE 8080
+#RUN apt update &&  \
+#    apt install redis-server -y  && \
+#    apt install net-tools -y && \
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Копирует все файлы из нашего локального проекта в контейнер для автоперезагрузки изменений
 COPY . .
