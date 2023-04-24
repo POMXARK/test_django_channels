@@ -13,4 +13,4 @@ EXPOSE 8000
 # Копирует все файлы из нашего локального проекта в контейнер для автоперезагрузки изменений
 COPY . .
 
-CMD ["daphne", "test_django_channels.asgi:application", "-b", "0.0.0.0", "-p", "8000"]
+CMD ["daphne", "test_django_channels.asgi:application", "-b", "testdjangochannels-1997pom.b4a.run", "-p", "8000"]
