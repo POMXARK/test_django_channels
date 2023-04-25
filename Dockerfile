@@ -15,8 +15,8 @@ EXPOSE 8080
 
 # Копирует все файлы из нашего локального проекта в контейнер для автоперезагрузки изменений
 COPY . .
-
-CMD ["/bin/bash","-c","./startup_without_supervisor.sh"]
+ENTRYPOINT ["./startup_without_supervisor.sh"]
+#CMD ["/bin/bash","-c","./startup_without_supervisor.sh"]
 #CMD ["daphne", "test_django_channels.asgi:application", "-b", "0.0.0.0", "-p", "8000"]
 
 # docker run -p 8080:80 -it $( docker build  -q . -t test)
