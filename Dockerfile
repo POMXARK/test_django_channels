@@ -8,8 +8,8 @@ WORKDIR /app
 # Запускает команду pip install для всех библиотек, перечисленных в requirements.txt
 COPY requirements.txt requirements.txt
 RUN apt update &&\
-    apt -y install mc lsof nginx supervisor redis-server &&\
-#    apt install net-tools -y &&\
+    apt -y install nginx supervisor redis-server &&\
+#    apt -y install net-tools lsof mc &&\
     pip install --no-cache-dir -r requirements.txt
 EXPOSE 80
 
