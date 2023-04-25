@@ -7,15 +7,17 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /app
 # Запускает команду pip install для всех библиотек, перечисленных в requirements.txt
 COPY requirements.txt requirements.txt
-RUN apt update &&  \
-    apt install redis-server -y  && \
-#    apt install net-tools -y && \
+RUN apt update &&\
+    apt -y install mc lsof nginx supervisor redis-server &&\
+#    apt install net-tools -y &&\
     pip install --no-cache-dir -r requirements.txt
-EXPOSE 8080
+EXPOSE 80
 
 # Копирует все файлы из нашего локального проекта в контейнер для автоперезагрузки изменений
 COPY . .
 
 CMD ["/bin/bash","-c","./startup.sh"]
 
-#  docker run -p 8080:8080 -it $(docker build -q .)
+# docker run -p 8080:80 -it $( docker build  -q . -t test)
+# docker build . -t test
+# docker run --name test-container -p 8080:80 -it test
