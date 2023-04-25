@@ -12,6 +12,7 @@ RUN apt update &&\
 #    apt -y install net-tools lsof mc &&\
     pip install --no-cache-dir -r requirements.txt
 EXPOSE 80
+EXPOSE 8080
 
 # Копирует все файлы из нашего локального проекта в контейнер для автоперезагрузки изменений
 COPY . .
@@ -21,3 +22,4 @@ CMD ["/bin/bash","-c","./startup.sh"]
 # docker run -p 8080:80 -it $( docker build  -q . -t test)
 # docker build . -t test
 # docker run --name test-container -p 8080:80 -it test
+# docker rm --force test-container
