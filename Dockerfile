@@ -12,7 +12,6 @@ RUN apt update &&\
 #    apt -y install net-tools lsof mc &&\
     pip install --no-cache-dir -r requirements.txt
 EXPOSE 80
-EXPOSE 8080
 
 # Копирует все файлы из нашего локального проекта в контейнер для автоперезагрузки изменений
 COPY . .
