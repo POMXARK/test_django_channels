@@ -14,7 +14,7 @@
         const roomName = JSON.parse(document.getElementById('room-name').textContent);
 
         const chatSocket = new WebSocket(
-            'ws://'
+            'wss://'
             + 'localhost:8080' // внешний nginx порт
             + '/ws/chat/'
             + roomName
