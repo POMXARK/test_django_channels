@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'daphne',
+    # 'daphne',
     'chat',
 
     'django.contrib.admin',
@@ -81,14 +81,21 @@ WSGI_APPLICATION = 'test_django_channels.wsgi.application'
 ASGI_APPLICATION = "test_django_channels.asgi.application"
 
 # Channels
+# CHANNEL_LAYERS = {
+#     "default": {
+#         "BACKEND": "channels_redis.core.RedisChannelLayer",
+#         "CONFIG": {
+#             #"hosts": [("redis", 6379)],
+#             #"hosts": [("0.0.0.0", 6379)],
+#         },
+#     },
+# }
+
+# without redis ( only develop )
 CHANNEL_LAYERS = {
     "default": {
-        "BACKEND": "channels_redis.core.RedisChannelLayer",
-        "CONFIG": {
-            #"hosts": [("redis", 6379)],
-            "hosts": [("0.0.0.0", 6379)],
-        },
-    },
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
 }
 
 # Database
