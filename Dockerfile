@@ -21,7 +21,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 #    rm -rf /etc/nginx/sites-enabled/default &&\
 #    mkdir /run/daphne/
 
-EXPOSE 80
+EXPOSE 8000
 
 # Копирует все файлы из нашего локального проекта в контейнер для автоперезагрузки изменений
 COPY . .
