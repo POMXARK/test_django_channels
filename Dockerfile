@@ -28,7 +28,7 @@ COPY . .
 
 #CMD ["/usr/bin/supervisord","-n"]
 
-CMD ["uvicorn", "test_django_channels.asgi:application"]
+CMD ["uvicorn", "test_django_channels.asgi:application", "--host", "0.0.0.0", "--port", "8000"]
 
 #ENTRYPOINT ["./startup_without_supervisor.sh"]
 #CMD ["/bin/bash","-c","./startup_without_supervisor.sh"]
