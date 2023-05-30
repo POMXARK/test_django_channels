@@ -21,14 +21,14 @@ RUN pip install --no-cache-dir -r requirements.txt
 #    rm -rf /etc/nginx/sites-enabled/default &&\
 #    mkdir /run/daphne/
 
-EXPOSE 8000
+EXPOSE 8080
 
 # Копирует все файлы из нашего локального проекта в контейнер для автоперезагрузки изменений
 COPY . .
 
 #CMD ["/usr/bin/supervisord","-n"]
 
-CMD ["uvicorn", "test_django_channels.asgi:application", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "test_django_channels.asgi:application", "--host", "0.0.0.0", "--port", "8080"]
 
 #ENTRYPOINT ["./startup_without_supervisor.sh"]
 #CMD ["/bin/bash","-c","./startup_without_supervisor.sh"]
