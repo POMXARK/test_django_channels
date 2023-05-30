@@ -12,10 +12,10 @@
     {{ room_name|json_script:"room-name" }}
     <script>
         const roomName = JSON.parse(document.getElementById('room-name').textContent);
-        var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+        var ws_scheme = window.location.protocol === "https:" ? "wss" : "ws";
         const chatSocket = new WebSocket(
             ws_scheme + '://'
-            + 'test-django-channels.onrender.com:80' // внешний nginx порт
+            + 'test-django-channels.onrender.com' // внешний nginx порт
             + '/ws/chat/'
             + roomName
             + '/'
